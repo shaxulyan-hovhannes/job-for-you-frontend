@@ -1,0 +1,30 @@
+.mui-select-root {
+  width: 100% !important;
+  width: 100% !important;
+  height: 100%;
+  border: none !important;
+  border-radius: 4px;
+  padding: 0 8px;
+  background-color: #fff;
+  color: #333;
+
+  & fieldset {
+    border: none !important;
+  }
+
+  &:hover {
+    border: none !important;
+  }
+
+  & .MuiSelect-icon {
+    color: #333;
+  }
+
+  & .MuiSelect-select {
+    padding: 4px 8px;
+  }
+
+  &.Mui-focused {
+    border-color: #666;
+  }
+}

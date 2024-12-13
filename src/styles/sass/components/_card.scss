@@ -1,0 +1,17 @@
+.card {
+  width: 100%;
+  // border: 2px solid black;
+
+  &-header {
+    width: 100%;
+    background-color: var(--main-theme-color);
+    color: white;
+    border-radius: 5px 5px 0 0;
+    padding: 14px 10px;
+  }
+
+  &-main {
+    padding: 15px 10px;
+    border: 1px solid var(--gray-color-15);
+  }
+}
