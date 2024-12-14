@@ -19,7 +19,13 @@ const initialState: EmployerState = {
 const UserSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    resetLoginedUser: (state) => {
+      state.loading = false;
+      state.error = null;
+      state.loginedUser = null;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(handleSignupCandidate.pending, (state) => {
@@ -42,5 +48,5 @@ const UserSlice = createSlice({
   },
 });
 
-export const {} = UserSlice.actions;
+export const { resetLoginedUser } = UserSlice.actions;
 export default UserSlice.reducer;

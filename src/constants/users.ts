@@ -16,4 +16,11 @@ const SIGNUP_CANDIDATE_INITIAL_VALUES = {
   confirmPassword: "12345",
 };
 
-export { SIGNUP_CANDIDATE_INITIAL_VALUES };
+const USER_ROLES = {
+  guest: "guest",
+  candidate: "candidate",
+  employer: "employer",
+  admin: "admin",
+} as const;
+
+export { SIGNUP_CANDIDATE_INITIAL_VALUES, USER_ROLES };

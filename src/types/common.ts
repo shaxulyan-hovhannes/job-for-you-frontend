@@ -1,4 +1,5 @@
-import { APP_LANGUAGES, USER_ROLES } from "@/constants/common";
+import { APP_LANGUAGES } from "@/constants/common";
+import { USER_ROLES } from "@/constants/users";
 
 interface SelectOptionProps {
   id: number | string;

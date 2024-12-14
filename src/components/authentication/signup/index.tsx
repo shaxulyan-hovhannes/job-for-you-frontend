@@ -7,7 +7,7 @@ import EmployerteSignupForm from "./employer-signup-form";
 
 import { UserType } from "@/types/common";
 
-import { USER_ROLES } from "@/constants/common";
+import { USER_ROLES } from "@/constants/users";
 
 export default function SignupComponent() {
   const [selectedUserType, setSelectedUserTypes] = useState<UserType>(

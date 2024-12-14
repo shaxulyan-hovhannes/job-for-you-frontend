@@ -4,13 +4,6 @@ const APP_LANGUAGES = {
   ru: "ru",
 } as const;
 
-const USER_ROLES = {
-  guest: "guest",
-  candidate: "candidate",
-  employer: "employer",
-  admin: "admin",
-} as const;
-
 const HTML_INPUT_TYPES = {
   button: "button",
   checkbox: "checkbox",
@@ -36,4 +29,4 @@ const HTML_INPUT_TYPES = {
   week: "week",
 } as const;
 
-export { APP_LANGUAGES, USER_ROLES, HTML_INPUT_TYPES };
+export { APP_LANGUAGES, HTML_INPUT_TYPES };
