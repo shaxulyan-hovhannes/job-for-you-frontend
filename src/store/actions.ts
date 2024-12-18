@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { fetchJobs } from "@/api/jobs";
 import { fetchEmployers } from "@/api/employers";
-import { signupCandidate } from "@/api/auth";
+import { signupCandidate, getUserInfo } from "@/api/auth";
 import { UserFormDataType } from "@/components/authentication/signup/candidate-signup-form";
 
 // const handleFetchJobs = createAsyncThunk(
@@ -52,4 +52,19 @@ const handleSignupCandidate = createAsyncThunk(
   }
 );
 
-export { handleFetchJobs, handleFetchEmployers, handleSignupCandidate };
+const handleGetUserInfo = createAsyncThunk("user/getUserInfo", async () => {
+  try {
+    const response = await getUserInfo();
+
+    return response;
+  } catch (err) {
+    throw err;
+  }
+});
+
+export {
+  handleFetchJobs,
+  handleFetchEmployers,
+  handleSignupCandidate,
+  handleGetUserInfo,
+};

@@ -1,19 +1,21 @@
 "use client";
 
-import React, { PropsWithChildren, useState, useEffect, useMemo } from "react";
-import { useRouter, redirect } from "next/navigation";
+import { PropsWithChildren, useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 import { useAppSelector, useAppDispatch } from "@/store";
 import { selectUserState } from "@/store/user/userSelectors";
 import { resetLoginedUser } from "@/store/user/userSlice";
+import { handleGetUserInfo } from "@/store/actions";
+
+import axios from "@/utils/axios";
+import { CryptoJsService } from "@/utils/crypto-js-service";
 
 import paths from "@/constants/paths";
 
-interface AuthGuardProps extends PropsWithChildren {
-  test?: boolean;
-}
+// interface AuthGuardProps extends PropsWithChildren {}
 
-export default function AuthGuard({ test = false, children }: AuthGuardProps) {
+export default function AuthGuard({ children }: PropsWithChildren) {
   const [isChecking, setIsChecking] = useState<boolean>(true);
 
   const dispatch = useAppDispatch();
@@ -23,22 +25,36 @@ export default function AuthGuard({ test = false, children }: AuthGuardProps) {
   const userState = useAppSelector(selectUserState);
 
   useEffect(() => {
-    // console.log("AUTH GUARD LOGINED USER", userState.loginedUser);
-    const accessToken = localStorage.getItem("access_token");
+    try {
+      dispatch(handleGetUserInfo()).then((action) => {
+        const encryptedAccessToken = action.payload?._v;
 
-    if (!accessToken) {
+        if (encryptedAccessToken) {
+          const decodedAccessToken =
+            CryptoJsService.decrypt(encryptedAccessToken);
+
+          axios.interceptors.request.use(
+            (config) => {
+              config.headers.Authorization = `Bearer ${decodedAccessToken}`;
+
+              return config;
+            },
+            (error) => {
+              return Promise.reject(error);
+            }
+          );
+
+          setIsChecking(false);
+        } else {
+          dispatch(resetLoginedUser());
+          router.push(paths.login);
+        }
+      });
+    } catch (err) {
       dispatch(resetLoginedUser());
-
       router.push(paths.login);
     }
   }, []);
-
-  useEffect(() => {
-    // if no userInfo in store (no signup case) -> get UserInfo
-    // if (success userINfo response) -> set userinfo to store -> set isCHecking as false && render layout with sidebar -> get router query
-    // |-> get target data (depended from router query (/dashboard, /my-resume, etc))
-    // if no userInfo -> remove access_token from localStorage -> replace to login page
-  }, [userState.loginedUser]);
 
   if (isChecking) {
     return null;

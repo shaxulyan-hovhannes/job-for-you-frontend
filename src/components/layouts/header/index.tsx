@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import axios from "@/utils/axios";
 
 import { useAppDispatch } from "@/store";
+import { handleGetUserInfo } from "@/store/actions";
 
 import HeaderAuthSection from "./auth-section";
 
@@ -22,18 +22,6 @@ import {
   listingViewModeType,
   setListingViewMode,
 } from "@/store/storage/storageSlice";
-
-// import axios from 'services/axiosConfig'; // Импортируем конфигурацию Axios
-
-// export async function fetchData() {
-//   try {
-//     const response = await axios.get('/api/data');
-//     return response.data;
-//   } catch (error) {
-//     console.error('Error fetching data:', error);
-//     throw error;
-//   }
-// }
 
 export default function Header() {
   const [isAuthenticated] = useState<boolean>(false);
@@ -81,32 +69,11 @@ export default function Header() {
     }
   }, [dispatch]);
 
-  useEffect(() => {
-    // const getTodos = async () => {
-    //   // const response = await fetch("/api/todos");
-    //   const response = await fetch("https://job-for-you-backend.vercel.app/");
-    //   // const response = await fetch("https://job-for-you-api.onrender.com/");
-    //   // const todos = await response.json();
-    //   const todos = await response.text();
-
-    //   console.log("TODOS RESPONSE", todos);
-
-    //   return todos;
-    // };
-
-    // getTodos();
-
-    const doFetch = async () => {
-      try {
-        const response = await axios.get("");
-        // return response.data;
-      } catch (error) {
-        throw error;
-      }
-    };
-
-    doFetch();
-  }, []);
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     dispatch(handleGetUserInfo());
+  //   }, 3000);
+  // }, []);
 
   return (
     <header>

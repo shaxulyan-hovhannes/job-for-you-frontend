@@ -28,20 +28,12 @@ class AxiosConfig {
     );
   }
 
-  private addToken(config: InternalAxiosRequestConfig) {
-    const token = localStorage.getItem("jwt");
-    if (token) {
-      config.headers!["Authorization"] = `Bearer ${token}`;
-    }
-    return config;
-  }
-
   private requestInterceptor(config: InternalAxiosRequestConfig) {
     // return this.addToken(config); // Добавление токена перед каждым запросом
-    const token = localStorage.getItem("jwt");
-    if (token) {
-      config.headers!["Authorization"] = `Bearer ${token}`;
-    }
+    // const token = localStorage.getItem("jwt");
+    // if (token) {
+    //   config.headers!["Authorization"] = `Bearer ${token}`;
+    // }
     return config;
   }
 

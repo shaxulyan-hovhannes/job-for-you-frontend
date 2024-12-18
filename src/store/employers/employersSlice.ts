@@ -2,8 +2,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { handleFetchEmployers } from "../actions";
 
-import { JOB_CATEGORIES } from "@/constants/job";
-import { LOCATIONS } from "@/constants/locations";
 import { EmployerItem } from "@/types/common";
 
 interface EmployersFilters {

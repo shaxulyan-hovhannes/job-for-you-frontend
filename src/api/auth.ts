@@ -6,7 +6,9 @@ const signupCandidate = async (
   payload: Omit<UserFormDataType, "confirmPassword">
 ) => {
   try {
-    const response = await axios.post("/auth/signup", payload);
+    const response = await axios.post("/auth/signup", payload, {
+      withCredentials: true,
+    });
 
     return response.data;
   } catch (error) {
@@ -14,4 +16,14 @@ const signupCandidate = async (
   }
 };
 
-export { signupCandidate };
+const getUserInfo = async () => {
+  try {
+    const response = await axios.get("/user/info", { withCredentials: true });
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export { signupCandidate, getUserInfo };

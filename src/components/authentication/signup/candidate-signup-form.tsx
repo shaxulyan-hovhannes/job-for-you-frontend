@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 
 import MuiTextField from "@/components/core/ui/textfield";
@@ -16,7 +16,7 @@ import { handleSignupCandidate } from "@/store/actions";
 import { USER_SIGNUP_VALIDATION_SCHEMA } from "@/constants/validation-shapes";
 import { HTML_INPUT_TYPES } from "@/constants/common";
 import { SIGNUP_CANDIDATE_INITIAL_VALUES, USER_ROLES } from "@/constants/users";
-import paths from "@/constants/paths";
+// import paths from "@/constants/paths";
 
 export type UserFormDataType = Omit<User, "id" | "role"> & {
   password: string;
@@ -26,7 +26,7 @@ export type UserFormDataType = Omit<User, "id" | "role"> & {
 export default function CandidateSignupForm() {
   const dispatch = useAppDispatch();
 
-  const router = useRouter();
+  // const router = useRouter();
 
   const submitLoading = useAppSelector(selectSignupCandidateLoading);
 
@@ -48,7 +48,7 @@ export default function CandidateSignupForm() {
           values: submitData,
           cb: () => {
             resetForm();
-            router.push(paths.candidate);
+            // router.push(paths.candidateDashboard);
           },
         })
       );

@@ -2,12 +2,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { handleFetchJobs } from "../actions";
 
-import {
-  JOB_CATEGORIES,
-  WORK_FORMATS,
-  EMPLOYMENT_TYPES,
-} from "@/constants/job";
-import { LOCATIONS } from "@/constants/locations";
 import { JobItem } from "@/types/common";
 
 interface JobFilters {
