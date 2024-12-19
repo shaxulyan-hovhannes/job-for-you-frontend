@@ -31,7 +31,7 @@ export default function AuthGuard({ children }: PropsWithChildren) {
 
         if (encryptedAccessToken) {
           const decodedAccessToken =
-            CryptoJsService.decrypt(encryptedAccessToken);
+            CryptoJsService.decryptAccessToken(encryptedAccessToken);
 
           axios.interceptors.request.use(
             (config) => {

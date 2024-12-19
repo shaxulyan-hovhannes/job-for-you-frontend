@@ -60,7 +60,7 @@ const UserSlice = createSlice({
 
         if (encryptedAccessToken) {
           const decodedAccessToken =
-            CryptoJsService.decrypt(encryptedAccessToken);
+            CryptoJsService.decryptAccessToken(encryptedAccessToken);
           state.accessToken = decodedAccessToken;
         }
 
