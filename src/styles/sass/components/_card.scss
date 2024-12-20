@@ -1,12 +1,13 @@
+@use "./../abstracts/mixins" as mix;
+
 .card {
   width: 100%;
-  // border: 2px solid black;
 
   &-header {
+    @include mix.borderRadius(5px 5px 0 0);
     width: 100%;
     background-color: var(--main-theme-color);
     color: white;
-    border-radius: 5px 5px 0 0;
     padding: 14px 10px;
   }
 

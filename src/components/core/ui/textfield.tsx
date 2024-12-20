@@ -46,9 +46,8 @@ export default function MuiTextField({
   const textfieldRef = useRef<HTMLInputElement>(null);
 
   const [showRemoveIcon, setShowRemoveIcon] = useState<boolean>(false);
-  const [targetType, setTargetType] = useState<keyof typeof HTML_INPUT_TYPES>(
-    HTML_INPUT_TYPES.text
-  );
+  const [targetType, setTargetType] =
+    useState<keyof typeof HTML_INPUT_TYPES>(type);
 
   const handleMouseEnter = () => setShowRemoveIcon(true);
 

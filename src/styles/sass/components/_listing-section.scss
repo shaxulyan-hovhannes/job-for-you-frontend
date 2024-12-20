@@ -1,3 +1,5 @@
+@use "./../abstracts/mixins" as mix;
+
 .listing-section {
   flex: 1 1 auto;
   width: 65%;
@@ -21,9 +23,9 @@
       align-items: center;
 
       &-item {
+        @include mix.borderRadius(3px);
         cursor: pointer;
         padding: 5px;
-        border-radius: 3px;
         transition: 0.3s;
 
         &:hover:not(.view-mode-block-item--selected) {
@@ -69,17 +71,17 @@
     }
 
     &-logo-block {
+      @include mix.borderRadius(5px);
       width: 78px;
       height: 78px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
-      border-radius: 5px;
       transition: 0.2s;
 
       & > img {
+        @include mix.borderRadius(5px);
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 5px;
       }
 
       &:hover {
@@ -217,17 +219,17 @@
     }
 
     &-logo-block {
+      @include mix.borderRadius(5px);
       width: 78px;
       height: 78px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
-      border-radius: 5px;
       transition: 0.2s;
 
       & > img {
+        @include mix.borderRadius(5px);
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 5px;
       }
 
       &:hover {

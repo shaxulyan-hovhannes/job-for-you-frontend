@@ -25,4 +25,14 @@ const USER_SIGNUP_VALIDATION_SCHEMA = Yup.object({
     .required("Confirm password is required"),
 });
 
-export { USER_SIGNUP_VALIDATION_SCHEMA };
+const USER_LOGIN_VALIDATION_SCHEMA = Yup.object({
+  email: Yup.string()
+    .email("Invalid email format")
+    .required("Email is required"),
+  password: Yup.string()
+    .min(5, "Password must be at least 5 characters")
+    .max(30, "Password must be at most 30 characters")
+    .required("Required"),
+});
+
+export { USER_SIGNUP_VALIDATION_SCHEMA, USER_LOGIN_VALIDATION_SCHEMA };

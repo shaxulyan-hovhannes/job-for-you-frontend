@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 
 import MuiTextField from "@/components/core/ui/textfield";
@@ -10,13 +10,13 @@ import MuiButton from "@/components/core/ui/button";
 import { User } from "@/types/common";
 
 import { useAppDispatch, useAppSelector } from "@/store";
-import { selectSignupCandidateLoading } from "@/store/user/userSelectors";
+import { selectUserLoading } from "@/store/user/userSelectors";
 import { handleSignupCandidate } from "@/store/actions";
 
 import { USER_SIGNUP_VALIDATION_SCHEMA } from "@/constants/validation-shapes";
 import { HTML_INPUT_TYPES } from "@/constants/common";
 import { SIGNUP_CANDIDATE_INITIAL_VALUES, USER_ROLES } from "@/constants/users";
-// import paths from "@/constants/paths";
+import paths from "@/constants/paths";
 
 export type UserFormDataType = Omit<User, "id" | "role"> & {
   password: string;
@@ -26,12 +26,12 @@ export type UserFormDataType = Omit<User, "id" | "role"> & {
 export default function CandidateSignupForm() {
   const dispatch = useAppDispatch();
 
-  // const router = useRouter();
+  const router = useRouter();
 
-  const submitLoading = useAppSelector(selectSignupCandidateLoading);
+  const submitLoading = useAppSelector(selectUserLoading);
 
   const formik = useFormik({
-    initialValues: SIGNUP_CANDIDATE_INITIAL_VALUES as UserFormDataType,
+    initialValues: SIGNUP_CANDIDATE_INITIAL_VALUES,
     validationSchema: USER_SIGNUP_VALIDATION_SCHEMA,
     onSubmit: (values, { resetForm }) => {
       const submitData = {
@@ -48,7 +48,7 @@ export default function CandidateSignupForm() {
           values: submitData,
           cb: () => {
             resetForm();
-            // router.push(paths.candidateDashboard);
+            router.push(paths.candidateDashboard);
           },
         })
       );
@@ -87,7 +87,7 @@ export default function CandidateSignupForm() {
             helperText={touched.lastname ? errors.lastname : ""}
           />
         </div>
-      </div>{" "}
+      </div>
       <div className="pair-fields-block">
         <div>
           <MuiTextField

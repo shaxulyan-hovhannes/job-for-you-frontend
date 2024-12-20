@@ -9,7 +9,6 @@ import { resetLoginedUser } from "@/store/user/userSlice";
 import { handleGetUserInfo } from "@/store/actions";
 
 import axios from "@/utils/axios";
-import { CryptoJsService } from "@/utils/crypto-js-service";
 
 import paths from "@/constants/paths";
 
@@ -29,13 +28,12 @@ export default function AuthGuard({ children }: PropsWithChildren) {
       dispatch(handleGetUserInfo()).then((action) => {
         const encryptedAccessToken = action.payload?._v;
 
-        if (encryptedAccessToken) {
-          const decodedAccessToken =
-            CryptoJsService.decryptAccessToken(encryptedAccessToken);
+        console.log("ENCRYPTED ACCEESS TOKEN", action.payload?._v);
 
+        if (encryptedAccessToken) {
           axios.interceptors.request.use(
             (config) => {
-              config.headers.Authorization = `Bearer ${decodedAccessToken}`;
+              config.headers.Authorization = `Bearer ${encryptedAccessToken}`;
 
               return config;
             },

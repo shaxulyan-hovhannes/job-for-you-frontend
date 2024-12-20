@@ -1,3 +1,5 @@
+@use "./../abstracts/mixins" as mix;
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,18 +18,24 @@ body {
   background-color: #f5f5f5 !important;
 }
 
+// ::-webkit-scrollbar,
+// ::-webkit-scrollbar-track,
+// ::-webkit-scrollbar-thumb {
+//   @include mix.borderRadius;
+// }
+
 ::-webkit-scrollbar {
   width: 11px;
 }
 
 ::-webkit-scrollbar-track {
+  @include mix.borderRadius(10px);
   background: #f1f1f1;
-  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
+  @include mix.borderRadius(10px);
   background-color: #cccccc;
-  border-radius: 10px;
   border: 2px solid #f1f1f1;
 }
 

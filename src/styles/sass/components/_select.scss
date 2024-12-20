@@ -1,9 +1,11 @@
+@use "./../abstracts/mixins" as mix;
+
 .mui-select-root {
+  @include mix.borderRadius(4px);
   width: 100% !important;
   width: 100% !important;
   height: 100%;
   border: none !important;
-  border-radius: 4px;
   padding: 0 8px;
   background-color: #fff;
   color: #333;

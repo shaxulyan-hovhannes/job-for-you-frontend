@@ -16,6 +16,11 @@ const SIGNUP_CANDIDATE_INITIAL_VALUES = {
   confirmPassword: "12345",
 };
 
+const LOGIN_INITIAL_VALUES = {
+  email: "hov@gmail.com",
+  password: "12345",
+};
+
 const USER_ROLES = {
   guest: "guest",
   candidate: "candidate",
@@ -23,4 +28,4 @@ const USER_ROLES = {
   admin: "admin",
 } as const;
 
-export { SIGNUP_CANDIDATE_INITIAL_VALUES, USER_ROLES };
+export { SIGNUP_CANDIDATE_INITIAL_VALUES, USER_ROLES, LOGIN_INITIAL_VALUES };

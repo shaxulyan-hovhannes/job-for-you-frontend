@@ -1,3 +1,5 @@
+@use "./../abstracts/mixins" as mix;
+
 .filters-section {
   min-width: 320px;
   width: 30%;
@@ -7,6 +9,7 @@
   }
 
   &-header {
+    @include mix.borderRadius(5px);
     background-color: var(--gray-color-05);
     position: relative;
     display: flex;
@@ -15,7 +18,6 @@
     gap: 6px;
     font-size: 1rem;
     font-weight: 600;
-    border-radius: 5px;
     color: rgba(0, 0, 0, 0.7);
     padding: 15px 10px;
     margin-bottom: 20px;

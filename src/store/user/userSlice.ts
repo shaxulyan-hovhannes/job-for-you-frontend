@@ -1,23 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { handleSignupCandidate, handleGetUserInfo } from "../actions";
+import {
+  handleSignupCandidate,
+  handleGetUserInfo,
+  handleLogin,
+} from "../actions";
 
 import { User } from "@/types/common";
-
-import { CryptoJsService } from "@/utils/crypto-js-service";
 
 export interface EmployerState {
   loading: boolean;
   error: string | null | undefined;
   loginedUser: null | User;
-  accessToken: null | string;
 }
 
 const initialState: EmployerState = {
   loading: false,
   error: null,
   loginedUser: null,
-  accessToken: null,
 };
 
 const UserSlice = createSlice({
@@ -46,7 +46,6 @@ const UserSlice = createSlice({
       )
       .addCase(handleSignupCandidate.rejected, (state, action) => {
         state.loginedUser = null;
-        state.accessToken = null;
         state.error = action.error.message;
         state.loading = false;
       })
@@ -56,20 +55,25 @@ const UserSlice = createSlice({
         state.loading = true;
       })
       .addCase(handleGetUserInfo.fulfilled, (state, action) => {
-        const encryptedAccessToken = action.payload?._v;
-
-        if (encryptedAccessToken) {
-          const decodedAccessToken =
-            CryptoJsService.decryptAccessToken(encryptedAccessToken);
-          state.accessToken = decodedAccessToken;
-        }
-
         state.loginedUser = action.payload;
         state.loading = false;
       })
       .addCase(handleGetUserInfo.rejected, (state, action) => {
         state.loginedUser = null;
-        state.accessToken = null;
+        state.error = action.error.message;
+        state.loading = false;
+      })
+      .addCase(handleLogin.pending, (state) => {
+        state.error = null;
+        state.loginedUser = null;
+        state.loading = true;
+      })
+      .addCase(handleLogin.fulfilled, (state, action) => {
+        state.loginedUser = action.payload;
+        state.loading = false;
+      })
+      .addCase(handleLogin.rejected, (state, action) => {
+        state.loginedUser = null;
         state.error = action.error.message;
         state.loading = false;
       });

@@ -1,6 +1,5 @@
 // abstracts
 @use "./sass/abstracts/functions";
-@use "./sass/abstracts/mixins";
 @use "./sass/abstracts/variables";
 
 // base
@@ -14,7 +13,6 @@
 @use "./sass/components/card.scss";
 @use "./sass/components/listing-section";
 @use "./sass/components/signup";
-@use "./sass/components/login";
 
 // layouts
 @use "./sass/layouts/header";

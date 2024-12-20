@@ -1,3 +1,5 @@
+@use "./../abstracts/mixins" as mix;
+
 .mui-textfield {
   width: 100%;
 
@@ -13,8 +15,8 @@
   }
 
   .MuiInputBase-root {
+    @include mix.borderRadius(8px);
     background-color: #ffffff;
-    border-radius: 8px;
     border: none;
     width: 100%;
     min-height: 50px;

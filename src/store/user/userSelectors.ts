@@ -8,9 +8,9 @@ const selectLoginedUser = createSelector(
   (jobsState) => jobsState.loginedUser
 );
 
-const selectSignupCandidateLoading = createSelector(
+const selectUserLoading = createSelector(
   selectUserState,
   (userState) => userState.loading
 );
 
-export { selectUserState, selectLoginedUser, selectSignupCandidateLoading };
+export { selectUserState, selectLoginedUser, selectUserLoading };

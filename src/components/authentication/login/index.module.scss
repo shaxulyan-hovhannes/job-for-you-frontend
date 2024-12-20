@@ -1,0 +1,48 @@
+@use "./../../../styles/sass/abstracts/mixins" as mix;
+
+.login-section {
+  @include mix.borderRadius(3px);
+  padding: 25px;
+  min-width: 350px;
+  width: 45vw;
+  text-align: center;
+
+  &-title {
+    text-transform: uppercase;
+    font-size: calc(0.8rem + 1.5vmin);
+    font-weight: 600;
+  }
+
+  form {
+    background-color: var(--gray-color-05);
+    border: 1px solid var(--gray-color-10);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .pair-fields-block {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+
+      & > div {
+        width: 100%;
+        min-width: 250px;
+        max-width: 100%;
+        flex: 1 1 auto;
+      }
+
+      & input[name="password"],
+      & input[name="confirmPassword"] {
+        padding-left: 7px;
+      }
+    }
+
+    button.submit-btn {
+      border-radius: 0 !important;
+    }
+  }
+}
