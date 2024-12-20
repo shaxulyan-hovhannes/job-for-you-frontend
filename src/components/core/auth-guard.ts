@@ -28,8 +28,6 @@ export default function AuthGuard({ children }: PropsWithChildren) {
       dispatch(handleGetUserInfo()).then((action) => {
         const encryptedAccessToken = action.payload?._v;
 
-        console.log("ENCRYPTED ACCEESS TOKEN", action.payload?._v);
-
         if (encryptedAccessToken) {
           axios.interceptors.request.use(
             (config) => {
