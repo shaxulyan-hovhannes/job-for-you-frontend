@@ -4,10 +4,12 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-import { useAppDispatch } from "@/store";
+import { useAppDispatch, useAppSelector } from "@/store";
 import { handleGetUserInfo } from "@/store/actions";
+import { selectUserState } from "@/store/user/userSelectors";
 
 import HeaderAuthSection from "./auth-section";
+import AuthSectionSkeleton from "./auth-section-skeleton";
 
 import paths from "@/constants/paths";
 import {
@@ -24,7 +26,11 @@ import {
 } from "@/store/storage/storageSlice";
 
 export default function Header() {
-  const [isAuthenticated] = useState<boolean>(false);
+  const [checkingAuthSection, setCheckingAuthSection] = useState<boolean>(true);
+
+  const userState = useAppSelector(selectUserState);
+
+  // console.log("HEADER USERSTATE", userState);
 
   const pathname = usePathname();
   const dispatch = useAppDispatch();
@@ -75,6 +81,12 @@ export default function Header() {
   //   }, 3000);
   // }, []);
 
+  useEffect(() => {
+    if (!userState.loading && typeof userState.isAuthenticated === "boolean") {
+      setCheckingAuthSection(false);
+    }
+  }, [userState.loading, userState.isAuthenticated]);
+
   return (
     <header>
       <Link href={paths.home}></Link>
@@ -98,7 +110,25 @@ export default function Header() {
           </ul>
         </nav>
         <div className="header-actions-block">
-          {isAuthenticated ? null : <HeaderAuthSection />}
+          {/* {!userState.isAuthenticated && !userState.loading ? (
+            <HeaderAuthSection />
+          ) : userState.loading && !userState.isAuthenticated ? (
+            "LOADING..."
+          ) : null} */}
+
+          {checkingAuthSection || userState.loading ? (
+            <AuthSectionSkeleton />
+          ) : !checkingAuthSection && userState.isAuthenticated === false ? (
+            <HeaderAuthSection />
+          ) : (
+            "AUTH AVATAR"
+          )}
+
+          {/* {!checkingAuthSection && userState.isAuthenticated === false ? (
+            <HeaderAuthSection />
+          ) : (
+            "AUTH AVATAR"
+          )} */}
         </div>
       </div>
     </header>

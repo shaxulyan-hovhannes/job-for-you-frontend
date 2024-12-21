@@ -46,11 +46,11 @@ header {
 
       a {
         & > button {
-          height: 44px !important;
+          height: 40px !important;
           display: flex !important;
           align-items: center !important;
           gap: 2px;
-          padding: 0 30px !important;
+          padding: 0 15px !important;
         }
 
         &:last-child {

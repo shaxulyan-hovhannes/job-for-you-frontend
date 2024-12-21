@@ -10,14 +10,14 @@ interface EmployersFilters {
   location?: string[];
 }
 
-export interface EmployerState {
+export interface UserState {
   isLoading: boolean;
   error: string | null | undefined;
   entities: EmployerItem[];
   filters: EmployersFilters;
 }
 
-const initialState: EmployerState = {
+const initialState: UserState = {
   isLoading: false,
   error: null,
   entities: [],

@@ -7,6 +7,7 @@ import Footer from "@/components/layouts/footer";
 import { CustomThemeProvider } from "@/components/core/theme-provider/theme-provider";
 import StoreProvider from "@/components/core/store-provider";
 import IntlProvider from "@/components/core/intl-provider";
+import UserProvider from "@/components/core/user-provider";
 
 export const metadata: Metadata = {
   title: "Job For You",
@@ -24,9 +25,11 @@ export default function RootLayout({
         <StoreProvider>
           <IntlProvider>
             <CustomThemeProvider>
-              <Header />
-              {children}
-              <Footer />
+              <UserProvider>
+                <Header />
+                {children}
+                <Footer />
+              </UserProvider>
             </CustomThemeProvider>
           </IntlProvider>
         </StoreProvider>
