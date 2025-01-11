@@ -1,6 +1,4 @@
-"use client";
-
-import { PropsWithChildren, useEffect } from "react";
+import { useEffect } from "react";
 
 import axios from "@/utils/axios";
 
@@ -9,14 +7,12 @@ import { useAppDispatch } from "@/store";
 import { handleGetUserInfo } from "@/store/actions";
 import { setIsUserAuthenticated } from "@/store/user/userSlice";
 
-export default function UserProvider({ children }: PropsWithChildren) {
+export default function useUser() {
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
+  const onGetUserInfo = () => {
     try {
       dispatch(handleGetUserInfo()).then((action) => {
-        console.log("USER PROVIDER ACTION", action);
-
         const encryptedAccessToken = action.payload?._v;
 
         if (encryptedAccessToken) {
@@ -37,7 +33,11 @@ export default function UserProvider({ children }: PropsWithChildren) {
 
       dispatch(setIsUserAuthenticated(false));
     }
-  }, []);
+  };
 
-  return children;
+  //   useEffect(() => {
+  //     onGetUserInfo();
+  //   }, []);
+
+  return { onGetUserInfo };
 }

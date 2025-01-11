@@ -10,6 +10,7 @@ import { selectUserState } from "@/store/user/userSelectors";
 
 import HeaderAuthSection from "./auth-section";
 import AuthSectionSkeleton from "./auth-section-skeleton";
+import HeaderActions from "./header-actions";
 
 import paths from "@/constants/paths";
 import {
@@ -29,8 +30,6 @@ export default function Header() {
   const [checkingAuthSection, setCheckingAuthSection] = useState<boolean>(true);
 
   const userState = useAppSelector(selectUserState);
-
-  // console.log("HEADER USERSTATE", userState);
 
   const pathname = usePathname();
   const dispatch = useAppDispatch();
@@ -109,7 +108,7 @@ export default function Header() {
             </li>
           </ul>
         </nav>
-        <div className="header-actions-block">
+        <div className="header-actions-section">
           {/* {!userState.isAuthenticated && !userState.loading ? (
             <HeaderAuthSection />
           ) : userState.loading && !userState.isAuthenticated ? (
@@ -121,7 +120,7 @@ export default function Header() {
           ) : !checkingAuthSection && userState.isAuthenticated === false ? (
             <HeaderAuthSection />
           ) : (
-            "AUTH AVATAR"
+            <HeaderActions />
           )}
 
           {/* {!checkingAuthSection && userState.isAuthenticated === false ? (

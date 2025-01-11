@@ -18,13 +18,13 @@ export default function HeaderAuthSection() {
     <section className="header-auth-section">
       <Link href={paths.signup}>
         <MuiButton>
-          <SignpostIcon fontSize="small" />
+          <SignpostIcon />
           Signup
         </MuiButton>
       </Link>
       <Link href={paths.login}>
         <MuiButton>
-          <LockIcon fontSize="small" />
+          <LockIcon />
           Login
         </MuiButton>
       </Link>

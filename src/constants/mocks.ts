@@ -45,7 +45,8 @@ const JOBS: JobItem[] = [
     workFormat: WORK_FORMATS_MAP.on_site,
     employmentType: EMPLOYMENT_TYPES_MAP.full_time,
     employerName: "Company-1",
-    employerLogo: "https://job.am/upload/logo/t_18594726logo.png",
+    employerLogo:
+      "https://cdn.staff.am/staff.am/upload/9/4/f/5/94f5b7ef.png.webp",
     createdAt: "12/5/2024",
     deadline: "12/25/2024",
   },
@@ -168,7 +169,7 @@ const EMPLOYERS: EmployerItem[] = [
   {
     id: "6755ba5acd2312cfcc6be967",
     name: "Company-3",
-    logo: "https://job.am/upload/logo/t_18594726logo.png",
+    logo: "https://cdn.staff.am/staff.am/upload/9/4/f/5/94f5b7ef.png.webp",
     location: LOCATIONS_MAP.vanadzor,
     foundedAt: "5/8/2013",
     activeJobs: 14,

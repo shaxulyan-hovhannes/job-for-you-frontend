@@ -6,4 +6,6 @@ export default {
   login: "/login",
   candidate: "/candidate",
   candidateDashboard: "/candidate/dashboard",
+  candidateProfile: "/candidate/profile",
+  candidateResume: "/candidate/resume",
 } as const;

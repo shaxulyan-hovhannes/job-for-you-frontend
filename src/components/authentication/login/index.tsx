@@ -8,6 +8,8 @@ import styles from "./index.module.scss";
 import MuiTextField from "@/components/core/ui/textfield";
 import MuiButton from "@/components/core/ui/button";
 
+import useUser from "@/components/core/user-provider/use-user";
+
 import { useAppDispatch, useAppSelector } from "@/store";
 import { handleLogin } from "@/store/actions";
 import { selectUserLoading } from "@/store/user/userSelectors";
@@ -26,6 +28,8 @@ export default function LoginComponent() {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
+  const { onGetUserInfo } = useUser();
+
   const submitLoading = useAppSelector(selectUserLoading);
 
   const formik = useFormik({
@@ -41,8 +45,11 @@ export default function LoginComponent() {
         handleLogin({
           values: submitData,
           cb: () => {
+            const x = onGetUserInfo();
             resetForm();
-            router.push(paths.candidateDashboard);
+            setTimeout(() => {
+              router.push(paths.candidateDashboard);
+            }, 10);
           },
         })
       );

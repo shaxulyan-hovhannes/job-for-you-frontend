@@ -1,3 +1,5 @@
+import paths from "./paths";
+
 const APP_LANGUAGES = {
   en: "en",
   hy: "hy",
@@ -29,4 +31,22 @@ const HTML_INPUT_TYPES = {
   week: "week",
 } as const;
 
-export { APP_LANGUAGES, HTML_INPUT_TYPES };
+const CANDIDATES_ROUTES = [
+  {
+    id: 1,
+    path: paths.candidateDashboard,
+    label: "Dashboard",
+  },
+  {
+    id: 2,
+    path: paths.candidateProfile,
+    label: "Profile",
+  },
+  {
+    id: 3,
+    path: paths.candidateResume,
+    label: "My Resume",
+  },
+];
+
+export { APP_LANGUAGES, HTML_INPUT_TYPES, CANDIDATES_ROUTES };

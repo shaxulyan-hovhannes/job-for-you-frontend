@@ -19,6 +19,8 @@ export interface UserState {
   is_verified: boolean;
   role: keyof typeof USER_ROLES;
   _v: null | undefined | string;
+  firstname: null | string;
+  lastname: null | string;
 }
 
 function resetUserState(state: UserState) {
@@ -27,6 +29,8 @@ function resetUserState(state: UserState) {
   state.is_verified = false;
   state.role = USER_ROLES.guest;
   state._v = null;
+  state.firstname = null;
+  state.lastname = null;
 }
 
 const initialState: UserState = {
@@ -39,6 +43,8 @@ const initialState: UserState = {
   is_verified: false,
   role: USER_ROLES.guest,
   _v: null,
+  firstname: null,
+  lastname: null,
 };
 
 const UserSlice = createSlice({
@@ -99,14 +105,14 @@ const UserSlice = createSlice({
       .addCase(handleGetUserInfo.fulfilled, (state, action) => {
         const payload = action.payload;
 
-        console.log("payload", payload);
-
         state.isAuthenticated = payload.isAuthenticated;
         state.id = payload.id;
         state.is_verified = payload.is_verified;
         state.role = payload.role;
         state._v = payload._v;
         state.success = payload.success;
+        state.firstname = payload.firstname;
+        state.lastname = payload.lastname;
 
         state.loading = false;
       })

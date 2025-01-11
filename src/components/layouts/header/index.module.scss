@@ -1,6 +1,40 @@
 .auth-section-skeleton {
-  width: 200px;
+  width: 100%;
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   gap: 10px;
+  // border: 2px solid green;
+}
+
+.header-actions-block {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0px 0px 4px 2px #bfbfbf;
+  cursor: pointer;
+  transition: 0.4s;
+
+  &:hover {
+    box-shadow: 0px 2px 4px 2px #bfbfbf;
+  }
+
+  &:active {
+    background-color: rgba(0, 0, 0, 0.04);
+    transform: translateY(3px);
+    user-select: none;
+  }
 }

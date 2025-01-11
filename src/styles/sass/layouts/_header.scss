@@ -36,21 +36,32 @@ header {
       }
     }
 
-    & .header-actions-block {
+    & .header-actions-section {
+      // width: 200px;
+      width: 250px;
       padding-right: 30px;
+      // border: 1px solid red;
     }
 
     .header-auth-section {
       display: flex;
       gap: 10px;
+      // border: 1px solid red;
 
       a {
         & > button {
+          // width: 80px !important;
+          width: 105px !important;
           height: 40px !important;
           display: flex !important;
           align-items: center !important;
-          gap: 2px;
+          gap: 0.4px;
           padding: 0 15px !important;
+          // font-size: 1.08rem !important;
+
+          & > svg {
+            font-size: 1.2rem;
+          }
         }
 
         &:last-child {
@@ -58,6 +69,7 @@ header {
             background-color: transparent !important;
             color: rgb(100, 100, 100) !important;
             border: 2px solid var(--gray-color-15);
+            gap: 1px;
 
             &:hover {
               background-color: var(--main-theme-color-blink-color) !important;
